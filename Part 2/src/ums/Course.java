@@ -92,6 +92,15 @@ public class Course {
     }
 
     /**
+     * Returns a read-only view of the registered teaching assistants.
+     *
+     * @return the registered teaching assistants 
+     */
+    public List<TeachingAssistant> getTeachingAssistants() {
+        return Collections.unmodifiableList(teachingAssistants);
+    }
+
+    /**
      * Returns a read-only view of the registered students.
      *
      * @return the registered students
@@ -159,7 +168,7 @@ public class Course {
             throw new IllegalStateException(
                 "Teaching assistant " + ta.getFullName() + " is already instructing course " + code + "."
             );
-        } else if (teachingAssistants.size() > TeachingAssistant.MAX_COURSES) {
+        } else if (teachingAssistants.size() >= TeachingAssistant.MAX_COURSES) {
             throw new IllegalStateException(
                 "Courses can only be assigned up to a maximum of "
                     + TeachingAssistant.MAX_COURSES
