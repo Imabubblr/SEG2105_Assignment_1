@@ -1,6 +1,7 @@
 package ums;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class Course {
 
     /** Professor teaching the course, or null if none is assigned yet. */
     private Professor professor;
+
+    /** Teaching assistants teaching the course. */
+    private final List<TeachingAssistant> teachingAssistants = new ArrayList<>();
 
     /** Students registered in the course. */
     private final List<Student> students = new ArrayList<>();
@@ -126,6 +130,12 @@ public class Course {
         sb.append("  Enrolment: ").append(students.size()).append('/').append(capacity).append('\n');
         sb.append("  Professor: ")
           .append(professor == null ? "(none)" : professor.getFullName()).append('\n');
+        sb.append("  TAs: ");
+        sb.append(
+            teachingAssistants.isEmpty()
+                ? "(none)"
+                : String.join(", ", (CharSequence) teachingAssistants.stream().map(ta -> ta.getFullName()))
+        );
         sb.append("  Students:\n");
         if (students.isEmpty()) {
             sb.append("    (none)\n");
@@ -135,5 +145,27 @@ public class Course {
               .append(' ').append(student.getFullName()).append('\n');
         }
         return sb.toString();
+    }
+
+    /**
+     * Assigns a teaching assistant to the course.
+     *
+     * @param ta the teaching assistant to register
+     * @throws IllegalStateException if the teaching assistant is already registered, or 
+     * the course already has the maximum number of teaching assistants.
+     */
+    public void addTeachingAssistant(TeachingAssistant ta) {
+        if (teachingAssistants.contains(ta)) {
+            throw new IllegalStateException(
+                "Teaching assistant " + ta.getFullName() + " is already instructing course " + code + "."
+            );
+        } else if (teachingAssistants.size() > TeachingAssistant.MAX_COURSES) {
+            throw new IllegalStateException(
+                "Courses can only be assigned up to a maximum of "
+                    + TeachingAssistant.MAX_COURSES
+                    + " teaching assistants."
+            );
+        }
+        teachingAssistants.add(ta);
     }
 }
