@@ -173,8 +173,18 @@ public class UniversityManagementSystem {
      * @param input the arguments of the command
      */
     public void processAssignGrade(List<String> input) {
-        // TODO Exercise 2.2
-        throw new UnsupportedOperationException("Assigning grades is not implemented yet.");
+        requireArguments(input, 3, "assign grade \"<student id>\" \"<course code>\" \"<grade>\"");
+        Student student = findStudent(input.get(0));
+        String course = input.get(1);
+        int grade = parseInteger(input.get(2), "grade");
+        student.addGrade(course, grade);
+        System.out.println(String.format(
+            "Grade %d (%s) recorded for %s in %s.",
+            grade,
+            Student.toLetterGrade(grade),
+            student.getFullName(),
+            course
+        ));
     }
 
     // ------------------------------------------------------------------
