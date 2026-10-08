@@ -70,7 +70,7 @@ public class UniversityManagementSystem {
             case "professor":
                 employee = new Professor(firstName, lastName, salary);
                 break;
-            case "TA":
+            case "ta":
                 employee = new TeachingAssistant(firstName, lastName, salary);
                 break;
             case "administrator":
@@ -125,15 +125,19 @@ public class UniversityManagementSystem {
                 System.out.println("Professor " + professor.getFullName()
                         + " assigned to " + course.getCode() + ".");
                 break;
-            case "TA":
+            case "ta":
                 TeachingAssistant ta = findEmployee(employeeId, TeachingAssistant.class, "TA");
                 if (course.getTeachingAssistants().size() >= TeachingAssistant.MAX_COURSES) {
-                    throw new IllegalStateException(course.getCode() + " is already taught by "
-                            + course.getProfessor().getFullName() + ".");
+                    throw new IllegalStateException(
+                        course.getCode()
+                            + " has a maximum of"
+                            + TeachingAssistant.MAX_COURSES
+                            + " teaching assistants."
+                        );
                 }
                 ta.addCourse(course);
                 course.addTeachingAssistant(ta);
-                System.out.println("Teaching assistant " + ta.getFullName()
+                System.out.println("TA " + ta.getFullName()
                         + " assigned to " + course.getCode() + ".");
                 break;
             default:
@@ -206,7 +210,7 @@ public class UniversityManagementSystem {
             case "professors":
                 type = Professor.class;
                 break;
-            case "TAs":
+            case "tas":
                 type = TeachingAssistant.class;
                 break;
             case "administrators":

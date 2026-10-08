@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -139,9 +140,9 @@ public class Student extends Person {
             throw new IllegalArgumentException("Grade must be between 0 and 100.");
         }
         if (!isRegisteredIn(courseCode)) {
-            throw new IllegalArgumentException("Student " + getFullName() + " is not registered in course " + courseCode + ".");
+            throw new IllegalArgumentException(getFullName() + " is not registered in " + courseCode + ".");
         }
-        grades.put(courseCode, grade);
+        grades.put(courseCode.toUpperCase(), grade);
     }
 
     /**
@@ -162,14 +163,14 @@ public class Student extends Person {
      * @return the student's transcript where each graded course is represented
      * on a separate line followed by the average.
      */
-    public String getTranscript() {
-        if (grades.isEmpty()) return "\t(none)\n";
+    private String getTranscript() {
+        if (grades.isEmpty()) return "    (no grades)\n";
 
         StringBuilder transcript = new StringBuilder();
         for (String course : grades.keySet()) {
             int grade = grades.get(course);
             transcript
-                .append("\t- ")
+                .append("    - ")
                 .append(course)
                 .append(": ")
                 .append(grade)
@@ -177,7 +178,13 @@ public class Student extends Person {
                 .append(toLetterGrade(grade))
                 .append(")\n");
         }
-        return null;
+        transcript
+            .append("    Average: ")
+            .append(String.format(Locale.ROOT, "%.2f", getAverage()))
+            .append(" (")
+            .append(toLetterGrade(getAverage()))
+            .append(")\n");
+        return transcript.toString();
     }
 
     /**

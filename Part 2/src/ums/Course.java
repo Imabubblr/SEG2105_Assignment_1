@@ -3,6 +3,7 @@ package ums;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A course offered by the university. A course has at most one professor and
@@ -139,12 +140,18 @@ public class Course {
         sb.append("  Professor: ")
           .append(professor == null ? "(none)" : professor.getFullName()).append('\n');
         sb.append("  TAs: ");
+
+        // Credits for Collectors.joining: https://stackoverflow.com/a/22577565
         sb.append(
             teachingAssistants.isEmpty()
                 ? "(none)"
-                : String.join(", ", (CharSequence) teachingAssistants.stream().map(ta -> ta.getFullName()))
+                : teachingAssistants
+                    .stream()
+                    .map(ta -> ta.getFullName())
+                    .collect(Collectors.joining(", "))
         );
-        sb.append("  Students:\n");
+
+        sb.append("\n  Students:\n");
         if (students.isEmpty()) {
             sb.append("    (none)\n");
         }

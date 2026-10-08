@@ -36,7 +36,7 @@ public class TeachingAssistant extends Instructor {
      */
     @Override
     public String toString() {
-        return "TeachingAssistant" + getFullName() + " (Employee ID: " + getEmployeeId() + ")\n"
+        return "TA " + getFullName() + " (Employee ID: " + getEmployeeId() + ")\n"
                 + "  Salary: " + getFormattedSalary() + "\n"
                 + "  Courses (" + getCourses().size() + "/" + getMaxCourses() + "):\n"
                 + getCoursesList();
