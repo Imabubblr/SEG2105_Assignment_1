@@ -1,3 +1,8 @@
+/**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
 /** Represents a vehicle that travels on water. */
 public class WaterVehicle extends Vehicle {
     private static int numberOfWaterVehicles = 0;

@@ -1,3 +1,8 @@
+/**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,8 @@
+/**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
 /** Represents a vehicle that travels on land. */
 public class LandVehicle extends Vehicle {
     private static int numberOfLandVehicles = 0;

@@ -1,4 +1,9 @@
 /**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
+/**
  * Represents the common state and behavior of every vehicle in the program.
  */
 public abstract class Vehicle implements Movable {

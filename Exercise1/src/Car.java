@@ -1,3 +1,8 @@
+/**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
 /** Represents a car, which is a land vehicle. */
 public class Car extends LandVehicle {
     /** Creates an unnamed car. */

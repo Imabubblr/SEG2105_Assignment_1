@@ -1,3 +1,8 @@
+/**
+ * Name: Henry Shi
+ * Student ID: 300474640
+ */
+
 /** Represents a sailboat, which is a water vehicle. */
 public class Sailboat extends WaterVehicle {
     /** Creates an unnamed sailboat. */
