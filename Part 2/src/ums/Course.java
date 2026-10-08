@@ -1,7 +1,6 @@
 package ums;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -168,7 +167,8 @@ public class Course {
             throw new IllegalStateException(
                 "Teaching assistant " + ta.getFullName() + " is already instructing course " + code + "."
             );
-        } else if (teachingAssistants.size() >= TeachingAssistant.MAX_COURSES) {
+        }
+        if (teachingAssistants.size() >= TeachingAssistant.MAX_COURSES) {
             throw new IllegalStateException(
                 "Courses can only be assigned up to a maximum of "
                     + TeachingAssistant.MAX_COURSES
