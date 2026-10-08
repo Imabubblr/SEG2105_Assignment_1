@@ -1,3 +1,7 @@
+/**
+ * Name: Edward Yang
+ * Student ID: 300508825
+ */
 package ums;
 
 import java.io.BufferedReader;

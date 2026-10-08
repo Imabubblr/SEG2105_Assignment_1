@@ -1,3 +1,7 @@
+/**
+ * Name: Edward Yang
+ * Student ID: 300508825
+ */
 package ums;
 
 import java.util.ArrayList;
@@ -132,7 +136,9 @@ public class Student extends Person {
     /**
      * Records the final grade (0 to 100 inclusively) of the student
      * in a course. Recording a grade for a course that already has one replaces it.
-     * 
+     *
+     * @param courseCode the course code 
+     * @param grade the final grade (0 to 100 inclusively) of the student
      * @throws IllegalArgumentException if the grade is out of range or if the student is not registered in the course.
      */
     public void addGrade(String courseCode, int grade) {
@@ -146,6 +152,7 @@ public class Student extends Person {
     }
 
     /**
+     * Calculates the student's average grades.
      * @return the average of the recorded grades, or 0.0 if no grade has been recorded.
      */
     public double getAverage() {
@@ -160,6 +167,7 @@ public class Student extends Person {
     }
 
     /**
+     * Gets a formatted representation of the student's transcript.
      * @return the student's transcript where each graded course is represented
      * on a separate line followed by the average.
      */
